@@ -67,7 +67,7 @@ public class ServiceExpedition {
         e.setAssurance(assurance);
         e.setStatut(StatutExpedition.CREEE);
         e.setVehicule(v);
-        e.setPrixHT(calculateur.calculerPrixHT(colis, distance, mode, urgent, assurance, client.getType()));
+        e.setPrixHT(calculateur.calculerPrixHT(new DemandePrix(colis, distance, mode, urgent, assurance, client.getType())));
         e.setPrixTTC(Utils.arrondir(e.getPrixHT() * TAUX_TTC));
         e.setDateCreation(new Date());
         Calendar cal = Calendar.getInstance();
@@ -88,7 +88,7 @@ public class ServiceExpedition {
         if (distance == TableDistances.INCONNUE) {
             return -1;
         }
-        double ht = calculateur.calculerPrixHT(colis, distance, mode, urgent, assurance, typeClient);
+        double ht = calculateur.calculerPrixHT(new DemandePrix(colis, distance, mode, urgent, assurance, typeClient));
         return Utils.arrondir(ht * TAUX_TTC);
     }
 
