@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class Utils {
 
+    public static final int DISTANCE_INCONNUE = -1;
+
     public static SimpleDateFormat FORMAT_DATE = new SimpleDateFormat("dd/MM/yyyy");
 
     public static double arrondir(double valeur) {
@@ -47,6 +49,6 @@ public class Utils {
         } else if ((a.equals("PARIS") && b.equals("NEW YORK")) || (a.equals("NEW YORK") && b.equals("PARIS"))) {
             return 5840;
         }
-        return -1;
+        return DISTANCE_INCONNUE;
     }
 }
