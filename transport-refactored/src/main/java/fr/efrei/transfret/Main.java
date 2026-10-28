@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Notificateur notificateur = new Notificateur(new EmailConsole(), new SmsConsole());
         ServiceClient serviceClient = new ServiceClient(new ClientRepositoryMemoire(), notificateur);
-        ServiceExpedition serviceExpedition = new ServiceExpedition(new ExpeditionRepositoryMemoire(), new CalculateurPrix(new Assurance(new Remise(new SupplementUrgence(new SupplementRefrigere(new SupplementDangereux(new SupplementFragile(new TarifDeBase()))))))),
+        ServiceExpedition serviceExpedition = new ServiceExpedition(new ExpeditionRepositoryMemoire(), new CalculateurPrix(new Assurance(new Remise(new SupplementUrgence(new SupplementHorsGabarit(new SupplementRefrigere(new SupplementDangereux(new SupplementFragile(new TarifDeBase())))))))),
                 new AffectationVehicule(new Flotte()), new ValidateurExpedition(), new EstimateurDelai(), notificateur);
         GenerateurFacture generateurFacture = new GenerateurFacture();
 

@@ -27,6 +27,12 @@ public enum ModeTransport {
             if (urgent) return DELAI_AIR;
             return distance > SEUIL_LONG_COURRIER ? DELAI_AIR_LONG_COURRIER : DELAI_AIR;
         }
+    },
+    FLUVIAL(new TarifFluvial(), true, false, false) {
+        @Override
+        public int delai(int distance, boolean urgent) {
+            return (int) Math.ceil(distance / KM_JOUR_FLUVIAL) + JOURS_MANUTENTION_FLUVIAL;
+        }
     };
 
     private static final double VITESSE_ROUTE_KMH = 70.0;
@@ -39,6 +45,8 @@ public enum ModeTransport {
     private static final int DELAI_AIR = 1;
     private static final int DELAI_AIR_LONG_COURRIER = 2;
     private static final int SEUIL_LONG_COURRIER = 3000;
+    private static final double KM_JOUR_FLUVIAL = 360.0;
+    private static final int JOURS_MANUTENTION_FLUVIAL = 1;
 
     private final TarifTransport tarif;
     private final boolean accepteDangereux;

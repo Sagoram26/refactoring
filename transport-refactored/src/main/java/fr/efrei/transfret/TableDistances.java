@@ -14,7 +14,8 @@ public class TableDistances {
             cle("LYON", "MARSEILLE"), 315,
             cle("LE HAVRE", "NEW YORK"), 5850,
             cle("MARSEILLE", "ALGER"), 760,
-            cle("PARIS", "NEW YORK"), 5840);
+            cle("PARIS", "NEW YORK"), 5840,
+            cle("PARIS", "LE HAVRE"), 365);
 
     // retourne la distance en km entre deux villes, INCONNUE si le trajet n'est pas référencé
     public static int distance(String villeA, String villeB) {

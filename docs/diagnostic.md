@@ -81,3 +81,13 @@ Total : 1 méthode, avec 2 modifications.
 ## ServiceClient : une ou deux responsabilités ?
 
 On garde une seule classe qui orchestre la création du client : la validation est une précondition de la création, pas une responsabilité à part. L'envoi de l'email de bienvenue sera délégué à un `Notificateur` à l'étape 3.
+
+## Étape 8 : bilan de l'extension
+
+Pour FLUVIAL et le hors gabarit, on a modifié 4 fichiers existants, et seulement pour l'assemblage : `ModeTransport` (constante `FLUVIAL`), `Flotte` (la péniche), `TableDistances` (Paris - Le Havre) et `Main` (`SupplementHorsGabarit` dans la chaîne). Le diagnostic de l'étape 1 en comptait 11 dans le legacy, dont des classes véhicule qui n'avaient rien à voir avec le fluvial.
+
+Le reste tient dans trois nouvelles classes, `TarifFluvial`, `Peniche` et `SupplementHorsGabarit`, plus `ExtensionTest`. Aucun `if` ni `switch` existant n'a été modifié.
+
+Les 68 tests du contrat passent toujours, parce que le hors gabarit n'est assemblé que dans `Main`. Dans `NouveauSystemeAdapter`, il changerait le prix des colis du contrat qui dépassent 200 cm (fûts de solvant, produits laitiers, bobines d'acier, conteneur). Ce serait un changement de règle métier, plus un refactoring.
+
+L'enum `ModeTransport` du contrat n'a pas de valeur `FLUVIAL`. Le fluvial n'est donc testé que par les tests unitaires du nouveau code.
